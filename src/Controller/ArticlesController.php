@@ -31,12 +31,14 @@ class ArticlesController extends AppController
 	public function index()
 	{
 		$articles = $this->Articles->find();
+		// $slug = $this->Articles->find('slug', ['slug' => ]);
 		$this->set('articles', $articles);
 	}
 
 	public function add()
 	{
-		$article = $this->Articles->newEntity($this->request->data);
+		$article 		  = $this->Articles->newEntity($this->request->data);
+		$article->user_id = $this->Auth->user('id');
 		if($this->request->is('post')){
 			if($this->Articles->save($article)) {
 				$this->Flash->success(__('Article has been saved succesfully.'));
@@ -66,14 +68,18 @@ class ArticlesController extends AppController
 		$this->set('article', $article);
 	}
 
-	public function view($id = null)
+	public function view($id_slug = null)
 	{
-		if (!$id) {
+		if (!$id_slug) {
 			throw new NotFoundException("Invalid Article Request");
 		}
+		if(!empty((int)$id_slug)){
+			$article = $this->Articles->get($id_slug);
+		} else {
+			$article = $this->Articles->find('slug', ['slug' => $id_slug])->first();
+		}
 
-		$article = $this->Articles->get($id);
-		$this->set('article', $article);
+		$this->set('article', $article);			
 		
 	}
 

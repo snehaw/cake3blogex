@@ -9,6 +9,7 @@ class ArticlesTable extends Table
 	public function initialize(array $config)
 	{
 		$this->addBehavior('Timestamp');
+		$this->addBehavior('Sluggable');
 		// Just add the Belongs to relationship with CategoriesTable
 		$this->belongsTo('Users', [
 			'foreignKey' => 'user_id'

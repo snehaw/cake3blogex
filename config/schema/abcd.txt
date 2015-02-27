@@ -73,3 +73,5 @@ ALTER TABLE  `users` ADD  `profile_id` INT NOT NULL ;
 
 
 ALTER TABLE  `users` DROP  `profile_id` ;
+
+ALTER TABLE  `articles` ADD  `slug` TEXT NULL DEFAULT NULL AFTER  `id` ;

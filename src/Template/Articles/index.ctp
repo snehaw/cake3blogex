@@ -26,8 +26,12 @@
             <?= $article->created->format(DATE_RFC850) ?>
         </td>
         <td>
-        	<?= $this->Html->link(__('Edit'), ['action' => 'edit', $article->id]) ?>
-        	<?= $this->Html->link(__('View'), ['action' => 'view', $article->id]) ?>
+        	<?= $this->Html->link(__('Edit,'), ['action' => 'edit', $article->id]) ?>
+            <?php if (!empty($article->slug)) { ?>
+            <?= $this->Html->link(__('Slug View,'), ['action' => 'view', $article->slug]) ?>
+            <?php } else { ?>
+        	<?= $this->Html->link(__('View,'), ['action' => 'view', $article->id]) ?>
+            <?php } ?>
         	<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $article->id], ['confirm' => __('Are you sure you want to delete article {0} ?', $article->id)]) ?>
         </td>
     </tr>
