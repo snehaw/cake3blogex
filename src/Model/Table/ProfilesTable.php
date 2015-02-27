@@ -28,10 +28,6 @@ class ProfilesTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id'
         ]);
-        // $this->hasOne('Users', [
-        //     'className' => 'Users',
-        //     'foreignKey' => 'profile_id',
-        // ]);
     }
 
     /**
