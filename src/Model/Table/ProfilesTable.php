@@ -25,6 +25,7 @@ class ProfilesTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Upload');
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id'
         ]);
