@@ -34,8 +34,12 @@
     <div class="row texts">
         <div class="columns large-9">
             <h6 class="subheader"><?= __('Image') ?></h6>
-            <?= $this->Text->autoParagraph(h($profile->image)); ?>
+            <?php //$this->Text->autoParagraph(h($profile->image)); ?>
 
         </div>
+        <div class="columns large-9 image">
+            <?php echo $this->Html->image($profile->image) ?>
+        </div>
+        <div></div>
     </div>
 </div>

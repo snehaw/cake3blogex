@@ -13,14 +13,14 @@
     </ul>
 </div>
 <div class="profiles form large-10 medium-9 columns">
-    <?= $this->Form->create($profile); ?>
+    <?= $this->Form->create($profile, ['type' => 'file']); ?>
     <fieldset>
         <legend><?= __('Edit Profile') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
+            // echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
             echo $this->Form->input('first_name');
             echo $this->Form->input('last_name');
-            echo $this->Form->input('image');
+            echo $this->Form->input('image', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
