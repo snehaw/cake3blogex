@@ -64,4 +64,9 @@ class ProfilesTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
+
+    public function findByUserId(Query $query, array $options)
+    {
+        return $query->where(['user_id' => $options['user_id']]);
+    }
 }

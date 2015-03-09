@@ -48,19 +48,27 @@ class ProfilesController extends AppController
      */
     public function add()
     {
-        $profile = $this->Profiles->newEntity($this->request->data, ['associated' => ['Profiles']]);
-        $profile->user_id = $this->Auth->user('id');
-        if ($this->request->is('post')) {
-            // $profile = $this->Profiles->patchEntity($profile, $this->request->data);
-            if ($this->Profiles->save($profile)) {
-                $this->Flash->success('The profile has been saved.');
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error('The profile could not be saved. Please, try again.');
+        if ($this->Profiles->exists(['user_id' => $this->Auth->user('id')])) {
+            $this->Flash->warning('Your Profile Already exists. Only one Profile per User allowed');
+            $profileid = $this->Profiles->find('ByUserId', ['user_id' => $this->Auth->user('id')])->first();
+            $this->set(compact('profileid'));
+
+        } else {
+            $profile = $this->Profiles->newEntity($this->request->data, ['associated' => ['Profiles']]);
+            $profile->user_id = $this->Auth->user('id');
+            if ($this->request->is('post')) {
+                pr($profile);exit;
+                // $profile = $this->Profiles->patchEntity($profile, $this->request->data);
+                if ($this->Profiles->save($profile)) {
+                    $this->Flash->success('The profile has been saved.');
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error('The profile could not be saved. Please, try again.');
+                }
             }
+            // $users = $this->Profiles->Users->find('list', ['limit' => 200]);
+            $this->set(compact('profile'));
         }
-        // $users = $this->Profiles->Users->find('list', ['limit' => 200]);
-        $this->set(compact('profile'));
         // $this->set('_serialize', ['profile']);
     }
 
@@ -76,6 +84,7 @@ class ProfilesController extends AppController
         $profile = $this->Profiles->get($id, [
             'contain' => []
         ]);
+        // print_r($this->request->data);exit;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $profile = $this->Profiles->patchEntity($profile, $this->request->data);
             if ($this->Profiles->save($profile)) {
