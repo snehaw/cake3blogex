@@ -258,6 +258,10 @@ div.message.error:before {
   border-bottom: 1px solid #eee;
 }
 
+.view .texts .columns.image {
+  border-bottom: 0;
+}
+
 
 /** Notices and Errors **/
 .cake-error,
@@ -384,4 +388,17 @@ pre {
 }
 .not-found {
   text-align: center;
+}
+
+
+/*me*/
+div.message.warning {
+  background-color: #ffc600;
+  border-color: #ffc600;
+}
+
+div.message.warning:before {
+  padding: 11px 15px 14px 10px;
+  color: #ffc600;
+  content: "!";
 }
