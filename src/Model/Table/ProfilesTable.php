@@ -26,6 +26,10 @@ class ProfilesTable extends Table
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
         $this->addBehavior('Upload');
+        // $this->addBehavior('Upload', [
+        //     'renameNewFile'         => true,
+        //     'deleteExistingFile'  => true
+        //     ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id'
         ]);

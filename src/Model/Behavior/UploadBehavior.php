@@ -112,10 +112,10 @@ class UploadBehavior extends Behavior{
 		$fileInfo = $entity->get($this->_config['fileDataName']);
 		$tableName =  $this->_table->registryAlias();
 
-		echo "<pre>";
+		// echo "<pre>";
 		// print_r($event);
-		print_r($entity->toArray());
-		echo "</pre>";
+		// print_r($entity->toArray());
+		// echo "</pre>";
 
 		// Check Upload errors
 		$error = $this->checkError($fileInfo);
