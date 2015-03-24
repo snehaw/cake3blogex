@@ -6,10 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'StaticContentManager\\Test\\' => array($baseDir . '/plugins/StaticContentManager/tests'),
+    'StaticContentManager\\' => array($baseDir . '/plugins/StaticContentManager/src'),
     'Phinx\\' => array($vendorDir . '/robmorgan/phinx/src/Phinx'),
     'Migrations\\' => array($vendorDir . '/cakephp/migrations/src'),
     'DebugKit\\Test\\Fixture\\' => array($vendorDir . '/cakephp/debug_kit/tests/Fixture'),
     'DebugKit\\' => array($vendorDir . '/cakephp/debug_kit/src'),
+    'ContactManager\\Test\\' => array($baseDir . '/plugins/ContactManager/tests'),
+    'ContactManager\\' => array($baseDir . '/plugins/ContactManager/src'),
     'Cake\\Test\\' => array($vendorDir . '/cakephp/cakephp/tests'),
     'Cake\\Composer\\' => array($vendorDir . '/cakephp/plugin-installer/src'),
     'Cake\\' => array($vendorDir . '/cakephp/cakephp/src'),

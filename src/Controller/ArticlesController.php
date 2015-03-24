@@ -51,6 +51,11 @@ class ArticlesController extends AppController
 
 	public function edit($id = null)
 	{
+		// http://blog.com/articles/edit/1
+		// debug($this->request->here); // '/articles/edit/1'
+		debug($this->request->acceptLanguage());
+		// debug($this->request->base); // ''
+  //       debug($this->request->webroot); // '/'
 		if(!$id) {
 			throw new NotFoundException(__('Invalid Article Request.'));
 		}

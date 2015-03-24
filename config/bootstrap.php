@@ -193,3 +193,7 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
+
+Plugin::load('ContactManager', ['bootstrap' => false, 'routes' => true]);
+
+Plugin::load('StaticContentManager', ['autoload' => true, 'bootstrap' => false, 'routes' => true]);
